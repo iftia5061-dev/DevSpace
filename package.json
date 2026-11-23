@@ -1,0 +1,21 @@
+{
+  "name": "if-web",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website built with HTML, CSS, and Vanilla JavaScript.",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^13.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}

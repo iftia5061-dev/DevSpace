@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - DevSpace</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-bg);
+        }
+        .login-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid var(--light-gray);
+        }
+        .login-card h2 {
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-lg);
+        }
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            background-color: var(--background);
+            color: var(--dark-text);
+        }
+        .error-message {
+            color: #dc2626;
+            background: rgba(220, 38, 38, 0.1);
+            padding: 10px;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Admin Login</h2>
+            <div id="errorMessage" class="error-message"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: var(--spacing-md); color: var(--medium-gray);">
+                <a href="../index.html" style="color: var(--primary-dark);">← Back to Website</a>
+            </p>
+        </div>
+    </div>
+    <script type="module">
+        import { authService } from '../firebase-auth.js';
+        
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const result = await authService.login(email, password);
+            
+            if (result.success) {
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.textContent = result.error;
+                errorMessage.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
