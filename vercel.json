@@ -1,5 +1,15 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "vite"
+  "framework": "vite",
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/about", "destination": "/pages/about.html" },
+    { "source": "/projects", "destination": "/pages/projects.html" },
+    { "source": "/project-details", "destination": "/pages/project-details.html" },
+    { "source": "/services", "destination": "/pages/services.html" },
+    { "source": "/contact", "destination": "/pages/contact.html" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/dashboard", "destination": "/admin/dashboard.html" }
+  ]
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - DevSpace</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
         .login-container {
             min-height: 100vh;
@@ -75,12 +75,12 @@
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
             </form>
             <p style="text-align: center; margin-top: var(--spacing-md); color: var(--medium-gray);">
-                <a href="../index.html" style="color: var(--primary-dark);">← Back to Website</a>
+                <a href="/index.html" style="color: var(--primary-dark);">← Back to Website</a>
             </p>
         </div>
     </div>
     <script type="module">
-        import { authService } from '../firebase-auth.js';
+        import { authService } from '/firebase-auth.js';
         
         const loginForm = document.getElementById('loginForm');
         const errorMessage = document.getElementById('errorMessage');
@@ -94,7 +94,7 @@
             const result = await authService.login(email, password);
             
             if (result.success) {
-                window.location.href = 'dashboard.html';
+                window.location.href = '/admin/dashboard.html';
             } else {
                 errorMessage.textContent = result.error;
                 errorMessage.classList.add('show');
